@@ -1,18 +1,20 @@
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const response = await fetch("http://localhost:3000/api/alunos/tutores");
+  const ids = await response.json();
+
+  const paths = ids.map((id) => {
+    return { params: { id: `${id}` } };
+  });
+
   return {
     fallback: false,
-    paths: [
-      { params: { id: "107" } },
-      { params: { id: "203" } },
-      { params: { id: "1345" } },
-    ],
+    paths: paths,
   };
 }
 
 async function obterAlunoPorId(id) {
   const response = await fetch(`http://localhost:3000/api/alunos/${id}`);
-  const alunos = await response.json();
-  return alunos[0]
+  return await response.json();
 }
 
 export default async function AlunoPorId(props) {
@@ -22,9 +24,9 @@ export default async function AlunoPorId(props) {
     <div>
       <h1>Detalhes do Aluno</h1>
       <ul>
-        <li>{aluno.id}</li>
-        <li>{aluno.nome}</li>
-        <li>{aluno.email}</li>
+        <li>{aluno?.id}</li>
+        <li>{aluno?.nome}</li>
+        <li>{aluno?.email}</li>
       </ul>
     </div>
   );
