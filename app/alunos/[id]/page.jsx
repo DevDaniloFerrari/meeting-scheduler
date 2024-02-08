@@ -7,7 +7,7 @@ export async function getStaticPaths() {
   });
 
   return {
-    fallback: false,
+    fallback: true,
     paths: paths,
   };
 }
@@ -24,9 +24,9 @@ export default async function AlunoPorId(props) {
     <div>
       <h1>Detalhes do Aluno</h1>
       <ul>
-        <li>{aluno?.id}</li>
-        <li>{aluno?.nome}</li>
-        <li>{aluno?.email}</li>
+        <li>{aluno.id}</li>
+        <li>{aluno.nome}</li>
+        <li>{aluno.email}</li>
       </ul>
     </div>
   );
