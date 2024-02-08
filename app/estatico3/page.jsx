@@ -12,7 +12,7 @@ export default async function Estatico3() {
   const numero = await obterRandomNumber();
   return (
     <div>
-      <h1>Estático #02</h1>
+      <h1>Estático #03</h1>
       <h2>{numero}</h2>
     </div>
   );
