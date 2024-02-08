@@ -12,7 +12,9 @@ export default async function Estatico4() {
       <h1>Estático #04</h1>
       <ul>
         {produtos.map((produto) => (
-          <li key={produto.id}>{produto.nome} tem preço de R${produto.preco}</li>
+          <li key={produto.id}>
+            {produto.nome} tem preço de R${produto.preco}
+          </li>
         ))}
       </ul>
     </div>
